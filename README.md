@@ -43,7 +43,7 @@ The tgrade binary is the backbone of the platform.
 cd ~
 git clone https://github.com/confio/tgrade
 cd tgrade
-git checkout v1.0.0
+git checkout v2.0.0
 make build
 ```
 
