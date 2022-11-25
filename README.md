@@ -43,7 +43,7 @@ The tgrade binary is the backbone of the platform.
 cd ~
 git clone https://github.com/confio/tgrade
 cd tgrade
-git checkout v2.0.0
+git checkout v2.0.2
 make build
 ```
 
@@ -59,7 +59,7 @@ This shoulD return:
 ```
 name: tgrade
 server_name: tgrade
-version: 2.0.0
+version: 2.0.2
 commit: 7916c09bb9b338c8d0fd65faae1818a0c91712ca
 build_tags: netgo,ledger
 go: go version go1.19.1 linux/amd64
