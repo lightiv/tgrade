@@ -60,7 +60,7 @@ This shoulD return:
 name: tgrade
 server_name: tgrade
 version: 2.0.2
-commit: 7916c09bb9b338c8d0fd65faae1818a0c91712ca
+commit: a990225d4b92f09d7b6fad3d6147d71c3711ece4
 build_tags: netgo,ledger
 go: go version go1.19.1 linux/amd64
 ```
