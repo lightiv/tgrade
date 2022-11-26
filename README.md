@@ -98,7 +98,8 @@ tgrade keys add <KEY_NAME> --ledger
 ```
 ## ***It is critical that you stop now and backup the mnemonic just created.*** ##  
   
-This is the only way to recover your validator key/address.  Additionally you need to back up the following files now.  This is your validator's identity.
+This is the only way to recover your validator key/address.  Additionally you need to back up the following files now.  
+This is your validator's identity.  
 ```
 $HOME/.tgrade/config/node_key.json (Not mandatory.)
 $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
@@ -106,13 +107,27 @@ $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
 
 ## Create the genesis transaction (gentx) - PHASE 2
 
-Add your account to your local genesis file with a given amount and the key you just created. Use only 1000000000utgd, other amounts will be ignored.
+Add your account to your local genesis file with a given amount and the key you just created. 
+
+**Use only 1000000000utgd, other amounts will be ignored.**
 ```
 tgrade add-genesis-account $(tgrade keys show <KEY_NAME> -a) 1000000000utgd
 ```
 Create the gentx, use only `90000000000utgd`:
 ```
-tgrade gentx <KEY_NAME> 90000000000utgd --chain-id=elizabeth-1
+tgrade gentx <KEY_NAME> 90000000000utgd \
+   --moniker="<VALIDATOR_NAME>" \
+   --chain-id=elizabeth-1 \
+   --commission-rate="0.10" \
+   --commission-max-rate="0.20" \
+   --commission-max-change-rate="0.01" \
+   --min-self-delegation="1" \
+   --details="for your validator" \
+   --security-contact="security@domain.com" \
+   --website="https://domain.com" \
+   --identity=Keybase ID
+   
+* The last four above are optioinal.  If you do not have or do not know what it is, leave it out.
 ```
 If all goes well, you will see a message similar to the following:
 ```
