@@ -55,7 +55,7 @@ Check that you have the right `tgrade` version installed
 ```
 tgrade version --long
 ```
-This shoulD return:
+This should return:
 ```
 name: tgrade
 server_name: tgrade
