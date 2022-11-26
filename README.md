@@ -162,12 +162,12 @@ Change minimum gas prices in `${HOME}/.tgrade/config/app.toml` to `0.001utgd`.
 
 ### Get the final genesis file
 ```
-wget https://raw.githubusercontent.com/confio/tgrade-networks/main/elizabeth-1/config/genesis.json -O ~/.tgrade/config/genesis.json
+wget https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/genesis.json -O ~/.tgrade/config/genesis.json
 ```
 Verify Genesis sha256 hash
 ```
 sha256sum "${HOME}/.tgrade/config/genesis.json"
-# f14bf43d43e69d470859d2ba1e1eee6d576229aeb1e7c26cc98d29254886820a
+# f14bf43d43e69d470859d2ba1e1eee6d576229aeb1e7c26cc98d29254886820a <- TO BE UPDATED
 ```
 
 ### Start syncing
