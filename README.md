@@ -68,7 +68,7 @@ go: go version go1.19.1 linux/amd64
 ## Setting up a Testnet Genesis Tgrade Validator - PHASE 1
 
 ### Initialize your genesis and configuration files
-Initialize your genesis and configuration files for all validators nodes
+Initialize your genesis and configuration files for your validator node
 
 Usage:
 ```
@@ -91,16 +91,17 @@ Create an Address
 ```
 tgrade keys add <KEY_NAME> 
 ```
-**It is critical that you stop now and backup the mnemonic just created**
+
+If using a Ledger Nano (Very much optional for testnet)
+```
+tgrade keys add <KEY_NAME> --ledger
+```
+## ***It is critical that you stop now and backup the mnemonic just created.*** ##  
+  
 This is the only way to recover your validator key/address.  Additionally you need to back up the following files now.  This is your validator's identity.
 ```
 $HOME/.tgrade/config/node_key.json (Not mandatory.)
 $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
-```
-
-If using a Ledger Nano
-```
-tgrade keys add <KEY_NAME> --ledger
 ```
 
 ## Create the genesis transaction (gentx) - PHASE 2
