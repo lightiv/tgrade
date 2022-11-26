@@ -110,9 +110,9 @@ Add your account to your local genesis file with a given amount and the key you 
 ```
 tgrade add-genesis-account $(tgrade keys show <KEY_NAME> -a) 1000000000utgd
 ```
-Create the gentx, use only `9000000000utgd`:
+Create the gentx, use only `90000000000utgd`:
 ```
-tgrade gentx <KEY_NAME> 9000000000utgd --chain-id=elizabeth-1
+tgrade gentx <KEY_NAME> 90000000000utgd --chain-id=elizabeth-1
 ```
 If all goes well, you will see a message similar to the following:
 ```
