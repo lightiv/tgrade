@@ -172,7 +172,10 @@ sha256sum "${HOME}/.tgrade/config/genesis.json"
 
 ### Start syncing
 
-Add peers to the `persistent_peers =` in .tgrade/config/config.toml
+Add peers to the `persistent_peers =` in .tgrade/config/config.toml  
+  
+https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/peers.txt
+
 ```
 nano .tgrade/config/config.toml
 ```
