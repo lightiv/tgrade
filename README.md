@@ -73,7 +73,18 @@ Initialize your genesis and configuration files for all validators nodes
 Usage:
 ```
 tgrade init [moniker] [flags]
-tgrade init <NAME_OF_MY_VALIDATOR> --chain-id elizabeth-1
+```
+Download the pre-genesis genesis.json:
+
+```
+cd $HOME/.tgrade/config
+rm genesis.json
+wget https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/gentx_genesis.json
+mv gentx_genesis.json genesis.json
+```
+```
+tgrade tendermint unsafe-reset-all --home $HOME/.tgrade
+tgrade init "<NAME_OF_MY_VALIDATOR>" --chain-id elizabeth-1
 ```
 
 Create an Address
