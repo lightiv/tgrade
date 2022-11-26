@@ -141,22 +141,22 @@ Change minimum gas prices in `${HOME}/.tgrade/config/app.toml` to `0.001utgd`.
 
 - Clone your repo using
   ```
-  git clone https://github.com/<your-github-username>/testnets
+  git clone https://github.com/lightiv/tgrade.git
   ```
-- Fork `the testnets repo`
-- Clone your repor using
+- Fork `the tgrade repo` by click the `Fork` in the upper right corner of the page.  
+- Clone your repo using
   ```
-  git clone https://github.com/<your-github-username>/testnets
+  git clone https://github.com/<your-github-username>/tgrade
   ```
 - Copy the generated gentx json file to <repo_path>/elizabeth-1/gentx/. If you want, rename it to <NAME_OF_MY_VALIDATOR>.json so it's easier to identify.
   ```
-  cd testnets
+  cd tgrade
   cp "${HOME}/.tgrade/config/gentx/gentx*.json" ./elizabeth-1/gentx/
   ```
 - Commit and Push to your forked repo
 - Create a PR from your online repo
 
-**Gentxs will be accepted until <DATE_TIME_UTC>**
+**Gentxs will be accepted until December 5, 2022 at 08:00 UTC**
 
 ## Start You Validator - PHASE 3
 
