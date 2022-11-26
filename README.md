@@ -170,9 +170,10 @@ sha256sum "${HOME}/.tgrade/config/genesis.json"
 # f14bf43d43e69d470859d2ba1e1eee6d576229aeb1e7c26cc98d29254886820a <- TO BE UPDATED
 ```
 
-### Start syncing
+### Starting Your Node  
 
-Add peers to the `persistent_peers =` in .tgrade/config/config.toml  
+#### Genesis Time: `2022-12-08T00:16:00Z`  
+Add peers to the `persistent_peers =` in .tgrade/config/config.toml.  You can find those here:  
   
 https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/peers.txt
 
@@ -207,4 +208,8 @@ Enable, start, and monitor the service
 ```
 sudo systemctl enable tgrade
 sudo systemctl restart tgrade; sudo journalctl --no-hostname -fu tgrade -o cat
-```
+```  
+  
+#### If all goes well you should see similar:  
+  
+![image](https://user-images.githubusercontent.com/36428473/204069290-2ad35f29-fa45-4340-a4b1-f33277bf840c.png)
