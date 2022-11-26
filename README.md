@@ -91,7 +91,12 @@ Create an Address
 ```
 tgrade keys add <KEY_NAME> 
 ```
-**It is critical that you stop now and have the mnemonic just created**
+**It is critical that you stop now and backup the mnemonic just created**
+This is the only way to recover your validator key/address.  Additionally you need to back up the following files now.  This is your validator's identity.
+```
+$HOME/.tgrade/config/node_key.json (Not mandatory.)
+$HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
+```
 
 If using a Ledger Nano
 ```
