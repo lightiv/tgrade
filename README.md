@@ -6,7 +6,7 @@ Elizabeth-1 is our long term testnet.  It is an enviroment for the community to 
 For running a tgrade validator. We tested successfully with the following Architecture:
 
 - Ubuntu 20.04 LTS
-- go version 1.18.1 [1] or newer
+- go version 1.19.2 [1] or newer
 - Installed packages make and build-essential [2] [3]
 - 2 or more CPU cores Intel or AMD chipset
 - At least 40GB of disk storage
