@@ -118,7 +118,7 @@ If all goes well, you will see a message similar to the following:
 ```
 Genesis transaction written to "${HOME}/.tgrade/config/gentx/gentx-******.json"
 ```
-Change minimum gas prices in `${HOME}/.tgrade/config/app.toml` to `0.0025utgd`.
+Change minimum gas prices in `${HOME}/.tgrade/config/app.toml` to `0.001utgd`.
 
 ### Submit the Genesis transaction
 
