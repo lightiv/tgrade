@@ -105,58 +105,17 @@ $HOME/.tgrade/config/node_key.json (Not mandatory.)
 $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
 ```
 
-## Create the genesis transaction (gentx) - PHASE 2
+## Create Your Validator
 
-Add your account to your local genesis file with a given amount and the key you just created. 
+Get Tokens:
 
-**Use only 1000000000utgd, other amounts will be ignored.**
+Visit the Discord Faucet and receive 10 utgd:
 ```
-tgrade add-genesis-account $(tgrade keys show <KEY_NAME> -a) 1000000000utgd
+$request tgrade1...<your validator address>
 ```
-Create the gentx, use only `90000000000utgd`:
-```
-tgrade gentx <KEY_NAME> 90000000000utgd \
-   --moniker="<VALIDATOR_NAME>" \
-   --chain-id=elizabeth-1 \
-   --commission-rate="0.10" \
-   --commission-max-rate="0.20" \
-   --commission-max-change-rate="0.01" \
-   --min-self-delegation="1" \
-   --details="for your validator" \
-   --security-contact="security@domain.com" \
-   --website="https://domain.com" \
-   --identity=Keybase ID
-   
-* The last four above are optioinal.  If you do not have or do not know what it is, leave it out.
-```
-If all goes well, you will see a message similar to the following:
-```
-Genesis transaction written to "${HOME}/.tgrade/config/gentx/gentx-******.json"
-```
-Change minimum gas prices in `${HOME}/.tgrade/config/app.toml` to `0.001utgd`.
 
-### Submit the Genesis transaction
 
-- Fork the testnets repo into your Github account
 
-- Clone your repo using
-  ```
-  git clone https://github.com/lightiv/tgrade.git
-  ```
-- Fork `the tgrade repo` by click the `Fork` in the upper right corner of the page.  
-- Clone your repo using
-  ```
-  git clone https://github.com/<your-github-username>/tgrade
-  ```
-- Copy the generated gentx json file to <repo_path>/elizabeth-1/gentx/. If you want, rename it to <NAME_OF_MY_VALIDATOR>.json so it's easier to identify.
-  ```
-  cd tgrade
-  cp "${HOME}/.tgrade/config/gentx/gentx*.json" ./elizabeth-1/gentx/
-  ```
-- Commit and Push to your forked repo
-- Create a PR from your online repo
-
-**Gentxs will be accepted until December 5, 2022 at 08:00 UTC**
 
 ## Start You Validator - PHASE 3
 
