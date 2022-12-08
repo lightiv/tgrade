@@ -75,7 +75,7 @@ tgrade tendermint unsafe-reset-all --home $HOME/.tgrade
 tgrade init "<NAME_OF_MY_VALIDATOR>" --chain-id elizabeth-1
 ```
 
-#### Get the final genesis file ####
+#### Get the genesis file ####
 ```
 cd $HOME/.tgrade/config
 rm genesis.json
@@ -106,30 +106,7 @@ $HOME/.tgrade/config/node_key.json (Not mandatory.)
 $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
 ```
 
-## Create Your Validator
-
-Get Tokens:
-
-Visit the Discord Faucet `elizabeth-faucet` channel and receive 10 utgd:
-```
-$request tgrade1...<your validator address>
-```
-
-Verify you received tokens:
-```
-$balance tgrade1...<your validator address>
-```
-You should see the follow in the faucet channel:
-```
-{
-  "denom": "utgd",
-  "amount": "10000000"
-}
-```
-
-## Start Your Validator
-
-### Starting Your Node  
+### Starting Your Full Node  
 
 Add peers to the `persistent_peers =` in .tgrade/config/config.toml.  You can find those here:  
   
@@ -202,5 +179,47 @@ To check your work, ensure the version of `cosmovisor` and `tgrade` are the same
 cosmovisor version
 tgrade version
 ```
-#### If all goes well you should be syncing  
+#### If all goes well you should be syncing.  *Allow the node to fully sync:*
+
+## Create Your Validator
+
+Get Tokens:
+
+Visit the Discord Faucet `elizabeth-faucet` channel and receive 10 utgd:
+```
+$request tgrade1...<your validator address>
+```
+
+Verify you received tokens:
+```
+$balance tgrade1...<your validator address>
+```
+You should see the follow in the faucet channel:
+```
+{
+  "denom": "utgd",
+  "amount": "10000000"
+}
+```
+
+Create the validator:
+
+```
+tgrade tx staking create-validator -o text \
+  --amount=9000000utgd \
+  --pubkey=$(tgrade tendermint show-validator) \
+  --moniker="<VALIDATOR_NAME>" \
+  --chain-id=elizabeth-1 \
+  --commission-rate="0.10" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="1" \
+  --fees 5000utgd \
+  --from=skynet \
+  --details="<DESCRIPTION_OF_YOUR_ORGANIZATION" \ <- OPTIONAL***
+  --security-contact="<SECURITY_CONTACT_EMAIL_ADDRESS" \ <- OPTIONAL***
+  --website="<YOUR_WEBSIT" \  <- OPTIONAL***
+  --identity=<YOUR_KEYBASE_ID>  <- OPTIONAL***
+
+```  
 
