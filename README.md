@@ -65,26 +65,27 @@ build_tags: netgo,ledger
 go: go version go1.19.1 linux/amd64
 ```
 
-## Setting up a Testnet Genesis Tgrade Validator - PHASE 1
+## Setting up a Testnet Tgrade Validator
 
 ### Initialize your genesis and configuration files
 Initialize your genesis and configuration files for your validator node
 
-Usage:
-```
-tgrade init [moniker] [flags]
-```
-Download the pre-genesis genesis.json:
-
-```
-cd $HOME/.tgrade/config
-rm genesis.json
-wget https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/gentx_genesis.json
-mv gentx_genesis.json genesis.json
-```
 ```
 tgrade tendermint unsafe-reset-all --home $HOME/.tgrade
 tgrade init "<NAME_OF_MY_VALIDATOR>" --chain-id elizabeth-1
+```
+
+#### Get the final genesis file ####
+```
+cd $HOME/.tgrade/config
+rm genesis.json
+wget https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/genesis.json -O ~/.tgrade/config/genesis.json
+```
+
+Verify Genesis sha256 hash
+```
+sha256sum "${HOME}/.tgrade/config/genesis.json"
+# cd9501ec12e001ecaa4659f7e67b30ad48d0d4f96e95e2c3bea7f334690ed6a4
 ```
 
 Create an Address
@@ -109,29 +110,27 @@ $HOME/.tgrade/config/priv_validator_key.json **(Critical!!!)**
 
 Get Tokens:
 
-Visit the Discord Faucet and receive 10 utgd:
+Visit the Discord Faucet `elizabeth-faucet` channel and receive 10 utgd:
 ```
 $request tgrade1...<your validator address>
 ```
 
-
-
-
-## Start You Validator - PHASE 3
-
-### Get the final genesis file
+Verify you received tokens:
 ```
-wget https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/genesis.json -O ~/.tgrade/config/genesis.json
+$balance tgrade1...<your validator address>
 ```
-Verify Genesis sha256 hash
+You should see the follow in the faucet channel:
 ```
-sha256sum "${HOME}/.tgrade/config/genesis.json"
-# f14bf43d43e69d470859d2ba1e1eee6d576229aeb1e7c26cc98d29254886820a <- TO BE UPDATED
+{
+  "denom": "utgd",
+  "amount": "10000000"
+}
 ```
+
+## Start You Validator
 
 ### Starting Your Node  
 
-#### Genesis Time: `2022-12-08T00:16:00Z`  
 Add peers to the `persistent_peers =` in .tgrade/config/config.toml.  You can find those here:  
   
 https://github.com/lightiv/tgrade/raw/main/Elizabeth-1/peers.txt
@@ -169,6 +168,5 @@ sudo systemctl enable tgrade
 sudo systemctl restart tgrade; sudo journalctl --no-hostname -fu tgrade -o cat
 ```  
   
-#### If all goes well you should see similar:  
-  
-![image](https://user-images.githubusercontent.com/36428473/204069290-2ad35f29-fa45-4340-a4b1-f33277bf840c.png)
+#### If all goes well you should be syncing  
+
