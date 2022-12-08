@@ -127,7 +127,7 @@ You should see the follow in the faucet channel:
 }
 ```
 
-## Start You Validator
+## Start Your Validator
 
 ### Starting Your Node  
 
@@ -167,6 +167,40 @@ Enable, start, and monitor the service
 sudo systemctl enable tgrade
 sudo systemctl restart tgrade; sudo journalctl --no-hostname -fu tgrade -o cat
 ```  
-  
+
+## Starting Your Node With Cosmovisor
+Set up cosmovisor to ensure any future upgrades happen flawlessly. To install Cosmovisor:
+```
+go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
+```
+Create the required directories:
+```
+mkdir -p ~/.tgrade/cosmovisor
+mkdir -p ~/.tgrade/cosmovisor/genesis
+mkdir -p ~/.tgrade/cosmovisor/genesis/bin
+mkdir -p ~/.tgrade/cosmovisor/upgrades
+```
+Set the environment variables:
+```
+echo "# Setup Cosmovisor" >> ~/.profile
+echo "export DAEMON_NAME=tgrade" >> ~/.profile
+echo "export DAEMON_HOME=$HOME/.tgrade" >> ~/.profile
+echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=false" >> ~/.profile
+echo "export DAEMON_LOG_BUFFER_SIZE=512" >> ~/.profile
+echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> ~/.profile
+echo "export UNSAFE_SKIP_BACKUP=true" >> ~/.profile
+source ~/.profile
+```
+You may leave out UNSAFE_SKIP_BACKUP=true, however the backup takes a decent amount of time and public snapshots of old states are available.
+
+Copy the current `tgrade` binary into the cosmovisor/genesis folder:
+```
+cp $GOPATH/bin/tgrade ~/.tgrade/cosmovisor/genesis/bin
+```
+To check your work, ensure the version of `cosmovisor` and `tgrade` are the same:
+```
+cosmovisor version
+tgrade version
+```
 #### If all goes well you should be syncing  
 
