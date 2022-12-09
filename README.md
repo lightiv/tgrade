@@ -185,7 +185,7 @@ tgrade version
 
 Get Tokens:
 
-Visit the Discord Faucet `elizabeth-faucet` channel and receive 10 utgd:
+Visit the Discord Faucet `elizabeth-1-faucet` channel and receive 10 utgd:
 ```
 $request tgrade1...<your validator address>
 ```
